@@ -4,7 +4,7 @@ var requirejs = require('../bootstrap').bootstrap(),
 
 describe('file examiner', function() {
     
-    describe.only('when extracting the extension from a filename', function(){
+    describe('when extracting the extension from a filename', function(){
 
         it('should return a 1 letter extension', function(){
             fileExaminer.extractExtension('show.a').must.be('a');
@@ -28,7 +28,7 @@ describe('file examiner', function() {
 
     });
 
-    describe('when examining whether a file is an episode', function() {
+    describe.only('when examining whether a file is an episode', function() {
     
         it('should return true when filename ends with .avi', function() {
             fileExaminer.isEpisode('coolShow.avi').must.be.true();

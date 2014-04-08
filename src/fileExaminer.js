@@ -1,8 +1,15 @@
 
-define([], function(){
+define(['lodash'], function(_){
 	
+    var videoExtensions = ['avi', 'mp4', 'mkv', 'mpg', 'mpg4'];
+
 	var isEpisode = function(filename){
-		return false;
+		var extension = extractExtension(filename);
+		if (extension === null){
+			return false;
+		}
+
+		return _(videoExtensions).contains(extension);
 	};
 
 	var extractExtension = function(filename){
