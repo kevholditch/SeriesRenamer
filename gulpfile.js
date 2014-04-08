@@ -2,8 +2,8 @@ var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
 	mocha = require('gulp-mocha');
 
-var sourceFiles = ['**/*.js', '!node_modules/**'];
-var testFiles = ['test/**/*.js'];
+var sourceFiles = ['src/*.js', '!node_modules/**'];
+var testFiles = ['test/*.js'];
 
 var watching = false;
 
