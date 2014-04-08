@@ -1,6 +1,6 @@
 var requirejs = require('../bootstrap').bootstrap(),        
     fileFetcher = requirejs('src/fileFetcher'),
-    must = requirejs('must');
+    demand = requirejs('must');
 
 describe('file fetcher', function() {
   var result;

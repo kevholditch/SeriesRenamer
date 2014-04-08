@@ -5,7 +5,12 @@ define([], function(){
 		return false;
 	};
 
+	var extractExtension = function(filename){
+		return null;
+	};
+
 	return {
-		isEpisode: isEpisode
+		isEpisode: isEpisode,
+		extractExtension: extractExtension
 	};
 });
