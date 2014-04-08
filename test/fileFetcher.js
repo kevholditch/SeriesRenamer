@@ -19,21 +19,21 @@ describe('file fetcher', function() {
     });
 
     it('should return the correct information for each episode', function() {
-        result.episodes[0].folderDir.must.be('./testSeries1');
-        result.episodes[0].fileName.must.be('./random_show_S01_E01_www.downloadthis.com');
-        result.episodes[0].fileExtensions.must.be('.avi');
+        result.episodes[0].folderDir.must.be(__dirname + '\\testSeries1\\');
+        result.episodes[0].fileName.must.be('random_show_S01_E01_www.downloadthis.com');
+        result.episodes[0].fileExtension.must.be('.avi');
 
-        result.episodes[1].folderDir.must.be('./testSeries1');
-        result.episodes[1].fileName.must.be('./random_show_S01_E02_www.downloadthis.com');
-        result.episodes[1].fileExtensions.must.be('.avi');
+        result.episodes[1].folderDir.must.be(__dirname + '\\testSeries1\\');
+        result.episodes[1].fileName.must.be('random_show_S01_E02_www.downloadthis.com');
+        result.episodes[1].fileExtension.must.be('.avi');
 
-        result.episodes[2].folderDir.must.be('./testSeries1');
-        result.episodes[2].fileName.must.be('./random_show_S01_E03_www.downloadthis.com');
-        result.episodes[2].fileExtensions.must.be('.avi');
+        result.episodes[2].folderDir.must.be(__dirname + '\\testSeries1\\');
+        result.episodes[2].fileName.must.be('random_show_S01_E03_www.downloadthis.com');
+        result.episodes[2].fileExtension.must.be('.avi');
 
-        result.episodes[3].folderDir.must.be('./testSeries1');
-        result.episodes[3].fileName.must.be('./random_show_S01_E04_www.downloadthis.com');
-        result.episodes[3].fileExtensions.must.be('.mp4');
+        result.episodes[3].folderDir.must.be(__dirname + '\\testSeries1\\');
+        result.episodes[3].fileName.must.be('random_show_S01_E04_www.downloadthis.com');
+        result.episodes[3].fileExtension.must.be('.mp4');
         
     });
 
