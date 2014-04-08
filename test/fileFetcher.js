@@ -1,6 +1,6 @@
 var requirejs = require('../bootstrap').bootstrap(),        
     fileFetcher = requirejs('src/fileFetcher'),
-    should = requirejs('should');
+    must = requirejs('must');
 
 describe('file fetcher', function() {
   var result;
@@ -15,25 +15,25 @@ describe('file fetcher', function() {
     });
    
     it('should return 4 episodes ignoring other files', function() {
-        result.episodes.length.should.equal(4);      
+        result.episodes.length.must.equal(4);      
     });
 
     it('should return the correct information for each episode', function() {
-        result.episodes[0].folderDir.should.equal('./testSeries1');
-        result.episodes[0].fileName.should.equal('./random_show_S01_E01_www.downloadthis.com');
-        result.episodes[0].fileExtensions.should.equal('.avi');
+        result.episodes[0].folderDir.must.be('./testSeries1');
+        result.episodes[0].fileName.must.be('./random_show_S01_E01_www.downloadthis.com');
+        result.episodes[0].fileExtensions.must.be('.avi');
 
-        result.episodes[1].folderDir.should.equal('./testSeries1');
-        result.episodes[1].fileName.should.equal('./random_show_S01_E02_www.downloadthis.com');
-        result.episodes[1].fileExtensions.should.equal('.avi');
+        result.episodes[1].folderDir.must.be('./testSeries1');
+        result.episodes[1].fileName.must.be('./random_show_S01_E02_www.downloadthis.com');
+        result.episodes[1].fileExtensions.must.be('.avi');
 
-        result.episodes[2].folderDir.should.equal('./testSeries1');
-        result.episodes[2].fileName.should.equal('./random_show_S01_E03_www.downloadthis.com');
-        result.episodes[2].fileExtensions.should.equal('.avi');
+        result.episodes[2].folderDir.must.be('./testSeries1');
+        result.episodes[2].fileName.must.be('./random_show_S01_E03_www.downloadthis.com');
+        result.episodes[2].fileExtensions.must.be('.avi');
 
-        result.episodes[3].folderDir.should.equal('./testSeries1');
-        result.episodes[3].fileName.should.equal('./random_show_S01_E04_www.downloadthis.com');
-        result.episodes[3].fileExtensions.should.equal('.mp4');
+        result.episodes[3].folderDir.must.be('./testSeries1');
+        result.episodes[3].fileName.must.be('./random_show_S01_E04_www.downloadthis.com');
+        result.episodes[3].fileExtensions.must.be('.mp4');
         
     });
 
