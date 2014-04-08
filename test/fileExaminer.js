@@ -7,19 +7,19 @@ describe('file examiner', function() {
     describe.only('when extracting the extension from a filename', function(){
 
         it('should return a 1 letter extension', function(){
-            fileExaminer.extractExtension('show.a').must.be('.a');
+            fileExaminer.extractExtension('show.a').must.be('a');
         });
 
         it('should return a 2 letter extension', function(){
-            fileExaminer.extractExtension('show.bb').must.be('.bb');
+            fileExaminer.extractExtension('show.bB').must.be('bb');
         });
 
         it('should return a 3 letter extension', function(){
-            fileExaminer.extractExtension('show.ccc').must.be('.ccc');
+            fileExaminer.extractExtension('show.cCc').must.be('ccc');
         });
 
         it('should return a 4 letter extension', function(){
-            fileExaminer.extractExtension('show.dddd').must.be('.dddd');
+            fileExaminer.extractExtension('show.dDDd').must.be('dddd');
         });
 
         it('should return null when there is no extension', function(){
