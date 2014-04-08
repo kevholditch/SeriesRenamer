@@ -8,8 +8,8 @@ define(['fs', 'q', 'lodash', 'src/fileExaminer'], function(fs, $q, _, fileExamin
 		for(var i=0; i<files.length; i++){
 			currentFile = files[i];
 			
-			if (dir[dir.length - 1] !== '\\'){
-				dir += '\\';
+			if (dir[dir.length - 1] !== '/'){
+				dir += '/';
 			}
 			if (fs.lstatSync(dir + currentFile).isFile()){
 				if (fileExaminer.isEpisode(currentFile)){
