@@ -16,7 +16,8 @@ define(['fs', 'q', 'lodash', 'src/fileExaminer'], function(fs, $q, _, fileExamin
 				    results.push({
 				        folderDir: dir,
 				        fileName: fileExaminer.extractFilename(currentFile),
-				        fileExtension: fileExaminer.extractExtension(currentFile)
+				        fileExtension: fileExaminer.extractExtension(currentFile),
+				        fullFilePath: dir + currentFile
 				    });
 				}
 			}
