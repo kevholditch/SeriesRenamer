@@ -1,5 +1,5 @@
 
-define(['fs', 'q', 'lodash', 'src/fileExaminer'], function(fs, $q, _, fileExaminer) {
+define(['fs', 'q', 'lodash', 'src/fileExaminer', 'src/nameParser'], function(fs, $q, _, fileExaminer, nameParser) {
 	'use strict';
 
 	var getEpisodes = function(dir, files){
@@ -11,15 +11,17 @@ define(['fs', 'q', 'lodash', 'src/fileExaminer'], function(fs, $q, _, fileExamin
 			if (dir[dir.length - 1] !== '/'){
 				dir += '/';
 			}
-			if (fs.lstatSync(dir + currentFile).isFile()){
-				if (fileExaminer.isEpisode(currentFile)){
-				    results.push({
-				        folderDir: dir,
-				        fileName: fileExaminer.extractFilename(currentFile),
-				        fileExtension: fileExaminer.extractExtension(currentFile),
-				        fullFilePath: dir + currentFile
-				    });
-				}
+			if (fs.lstatSync(dir + currentFile).isFile() && fileExaminer.isEpisode(currentFile)){
+				var showDetails = nameParser.getShowDetails(currentFile);			
+			    results.push({
+			        folderDir: dir,
+			        fileName: fileExaminer.extractFilename(currentFile),
+			        fileExtension: fileExaminer.extractExtension(currentFile),
+			        fullFilePath: dir + currentFile,
+			        seriesNumber: showDetails.seriesNumber,
+			        episodeNumber: showDetails.episodeNumber
+			    });
+				
 			}
 		}
 		return results;
