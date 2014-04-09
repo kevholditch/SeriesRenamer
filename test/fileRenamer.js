@@ -2,7 +2,7 @@ var requirejs = require('../bootstrap').bootstrap(),
     fileRenamer = requirejs('src/fileRenamer'),
     demand = requirejs('must');
 
-describe('file reanmer', function() {        
+describe('file renamer', function() {        
 
     describe('when decorating the episodes with destination information', function(){
         var results;
