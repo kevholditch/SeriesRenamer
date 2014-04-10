@@ -1,14 +1,14 @@
 
-define(['q', 'fs', 'lodash', 'src/fileFetcher', 'src/nameGenerator'], function($q, fs, _, fileFetcher, nameGenerator){
+define(['q', 'fs', 'lodash', 'src/fileFetcher', 'src/nameGenerator', 'src/fileExaminer'], function($q, fs, _, fileFetcher, nameGenerator, fileExaminer){
 	
     var generateRename = function(showName, fromDir, toDir) {
 
     	var deferred = $q.defer();
-    	fileFetcher.fetchFiles(fromDir).then(function(files){
+    	fileFetcher.fetchFiles(fileExaminer.addTrailingSlash(fromDir)).then(function(files){
     		var results = _.map(files.episodes, function(episode){ 
 				return {
 							from: episode.fullFilePath,
-							to: toDir + nameGenerator.generateNewFileName(showName, episode.seriesNumber, episode.episodeNumber, episode.fileExtension)
+							to: fileExaminer.addTrailingSlash(toDir) + nameGenerator.generateNewFileName(showName, episode.seriesNumber, episode.episodeNumber, episode.fileExtension)
 						};					
 			});
 
@@ -30,7 +30,7 @@ define(['q', 'fs', 'lodash', 'src/fileFetcher', 'src/nameGenerator'], function($
 					promises.push(moveFile(files[i].from, files[i].to));
 				}
 				$q.all(promises).then(function(){
-					deferred.resolve();
+					deferred.resolve(files);
 				});
 				
 			});

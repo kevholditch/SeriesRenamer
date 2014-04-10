@@ -1,6 +1,7 @@
 
 var requirejs = require('./bootstrap').bootstrap(),	
-	fileRenamer = requirejs('src/fileRenamer');
+	fileRenamer = requirejs('src/fileRenamer'),
+	_ = requirejs('lodash');
 
 
 var argv = require('optimist')
@@ -10,11 +11,24 @@ var argv = require('optimist')
 
 
 if (argv.execute){
+	fileRenamer.performRename(argv.showName, argv.inputDir, argv.outputDir)
+		.then(function(files){
+			console.log('Renaming...');
 
+			_.each(files, function(file){
+				console.log(file.from + '  ->  ' + file.to);
+			});
+
+			console.log('Rename complete.');
+		});
 }else{
 	fileRenamer.generateRename(argv.showName, argv.inputDir, argv.outputDir)
 		.then(function(files){
-			console.log(files);
+			console.log('Will rename...');
+
+			_.each(files, function(file){
+				console.log(file.from + '  ->  ' + file.to);
+			});
 		});
 }
 
