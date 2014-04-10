@@ -7,7 +7,7 @@ describe('file fetcher', function() {
   var result, seriesPath;
 
   var getEpisodeByFilename = function(input, filename){        
-      return _(input.episodes).where(function(e){ return e.fileName === filename; }).value()[0];
+      return _(input.episodes).find(function(e){ return e.fileName === filename; });
   };
   
   describe('when getting all files from a single folder', function() {
