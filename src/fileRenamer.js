@@ -1,7 +1,7 @@
 
-define(['q', 'lodash', 'src/fileFetcher', 'src/nameGenerator'], function($q, _, fileFetcher, nameGenerator){
+define(['q', 'fs', 'lodash', 'src/fileFetcher', 'src/nameGenerator'], function($q, fs, _, fileFetcher, nameGenerator){
 	
-    var generateRename = function(showName, fromDir, toDir){
+    var generateRename = function(showName, fromDir, toDir) {
 
     	var deferred = $q.defer();
     	fileFetcher.fetchFiles(fromDir).then(function(files){
@@ -19,8 +19,28 @@ define(['q', 'lodash', 'src/fileFetcher', 'src/nameGenerator'], function($q, _, 
     
 	};
 
+	var performRename = function(showName, fromDir, toDir) {
+		var deferred = $q.defer();
+
+		generateRename(showName, fromDir, toDir)
+			.then(function(files){				
+				var promises = [];
+				var moveFile = $q.denodeify(fs.rename);
+				for(var i=0; i<files.length; i++){
+					promises.push(moveFile(files[i].from, files[i].to));
+				}
+				$q.all(promises).then(function(){
+					deferred.resolve();
+				});
+				
+			});
+
+		return deferred.promise;
+	};
+
 
 	return {
-		generateRename: generateRename
+		generateRename: generateRename,
+		performRename: performRename
 	};
 });
