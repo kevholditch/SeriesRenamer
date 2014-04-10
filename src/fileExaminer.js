@@ -3,6 +3,13 @@ define(['lodash'], function(_){
 	
     var videoExtensions = ['.avi', '.mp4', '.mkv', '.mpg', '.mpg4'];
 
+    var addTrailingSlash = function(dir){
+    	if (dir[dir.length - 1] !== '/'){
+			return dir + '/';
+		}
+		return dir;
+    };
+
 	var isEpisode = function(filename){
 		var extension = extractExtension(filename);
 		if (_.isNull(extension)){
@@ -31,6 +38,7 @@ define(['lodash'], function(_){
 	return {
 		isEpisode: isEpisode,
 		extractFilename: extractFilename,
-		extractExtension: extractExtension
+		extractExtension: extractExtension,
+		addTrailingSlash: addTrailingSlash
 	};
 });

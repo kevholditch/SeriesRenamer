@@ -73,8 +73,19 @@ describe('file examiner', function() {
         it('should return false when filename ends with .me', function() {
             fileExaminer.isEpisode('coolShow.me').must.be.false();
         });
+    });
 
-  });
+    describe('when adding trailing slash to directory', function(){
+
+        it('should add trailing slash when there is not one', function(){
+            fileExaminer.addTrailingSlash('path/other/x').must.be('path/other/x/');
+        });
+
+        it('should leave trailing slash when there is one', function(){
+            fileExaminer.addTrailingSlash('path/other/x/').must.be('path/other/x/');
+        });
+        
+    });
   
 
 });

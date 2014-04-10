@@ -4,20 +4,18 @@ define(['fs', 'q', 'lodash', 'src/fileExaminer', 'src/nameParser'], function(fs,
 
 	var getEpisodes = function(dir, files){
 		var results = [],
-			currentFile;
+			currentFile,
+			currentDir = fileExaminer.addTrailingSlash(dir);
 		for(var i=0; i<files.length; i++){
-			currentFile = files[i];
-			
-			if (dir[dir.length - 1] !== '/'){
-				dir += '/';
-			}
-			if (fs.lstatSync(dir + currentFile).isFile() && fileExaminer.isEpisode(currentFile)){
+			currentFile = files[i];					
+				
+			if (fs.lstatSync(currentDir + currentFile).isFile() && fileExaminer.isEpisode(currentFile)){
 				var showDetails = nameParser.getShowDetails(currentFile);			
 			    results.push({
-			        folderDir: dir,
+			        folderDir: currentDir,
 			        fileName: fileExaminer.extractFilename(currentFile),
 			        fileExtension: fileExaminer.extractExtension(currentFile),
-			        fullFilePath: dir + currentFile,
+			        fullFilePath: currentDir + currentFile,
 			        seriesNumber: showDetails.seriesNumber,
 			        episodeNumber: showDetails.episodeNumber
 			    });
