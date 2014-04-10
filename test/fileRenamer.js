@@ -109,10 +109,10 @@ describe('file renamer', function() {
         
         it('should rename the files into the output dir', function(done) {
             fs.readdir(outputDir, function(err, files){                
-                _.where(files, function(f){ return f == "Great_Show_S01_E01.avi"}).length.must.be(1);
-                _.where(files, function(f){ return f == "Great_Show_S01_E02.avi"}).length.must.be(1);
-                _.where(files, function(f){ return f == "Great_Show_S01_E03.avi"}).length.must.be(1);
-                _.where(files, function(f){ return f == "Great_Show_S01_E04.avi"}).length.must.be(1);     
+                _.where(files, function(f){ return f === "Great_Show_S01_E01.avi"}).length.must.be(1);
+                _.where(files, function(f){ return f === "Great_Show_S01_E02.avi"}).length.must.be(1);
+                _.where(files, function(f){ return f === "Great_Show_S01_E03.avi"}).length.must.be(1);
+                _.where(files, function(f){ return f === "Great_Show_S01_E04.avi"}).length.must.be(1);     
                 done();
             });    
         });
