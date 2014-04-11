@@ -20,3 +20,9 @@ S%% is the series number of the show (prefixed with 0 for single digit series e.
 E%% is the episode number of the show (prefixed with 0 for single digit episodes e.g. 01)
 
 It will then move all of the shows into a single folder.  The renamer will also deal with input files in nested folders.
+
+More Information
+================
+
+To read about some of the programming concepts used in creating the tv series renamer please see my blog post:
+http://kevinholditch.co.uk/2014/04/11/tv-series-renamer-written-in-node/
