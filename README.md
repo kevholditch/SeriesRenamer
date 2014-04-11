@@ -8,12 +8,12 @@ To use:
 
 1.  Clone the repo
 2.  npm install
-3.  node rename --showName="<the show name you want>" --inputDir="<directory where shows are>" --outputDir="<directory where you want files moved to>"
+3.  node rename --showName="the show name you want" --inputDir="directory where shows are" --outputDir="directory where you want files moved to"
 
 
 The renamer will automatically find all files in the input dir that are episodes of a tv show and rename them in the following way:
 
-<ShowName>_S%%_E%%.<extension>
+ShowName_S%%_E%%.extension
 
 <ShowName> is the name of the show you passed in
 S%% is the series number of the show (prefixed with 0 for single digit series e.g. 01)
