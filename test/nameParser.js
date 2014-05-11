@@ -58,6 +58,14 @@ describe('name parser', function() {
             });
         });
 
+        describe('and the series and episode number are in 3 digit format', function(){
+            it('should return the information for the series and episode correctly', function(){
+                var result = nameParser.getShowDetails('cool_show_102');
+                result.seriesNumber.must.be(1);
+                result.episodeNumber.must.be(2);
+            });
+        });
+
         
     });
 
